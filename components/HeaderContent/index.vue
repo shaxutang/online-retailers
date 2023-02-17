@@ -29,17 +29,17 @@ import {
     <div class="flex-3/12 flex">
       <div class="flex space-x-2.5">
         <div
-          class="cursor-pointer w12 h12 lh-12 text-center text-theme-black-300 b-rd-full overflow-hidden border-1"
+          class="cursor-pointer w12 h12 lh-12 text-xl text-center text-theme-black-300 b-rd-full overflow-hidden border-1"
         >
           <FontAwesomeIcon :icon="faShoppingCart" />
         </div>
         <div
-          class="cursor-pointer w12 h12 lh-12 text-center text-theme-black-300 b-rd-full overflow-hidden border-1"
+          class="cursor-pointer w12 h12 lh-12 text-xl text-center text-theme-black-300 b-rd-full overflow-hidden border-1"
         >
           <FontAwesomeIcon :icon="faHeart" />
         </div>
         <div
-          class="cursor-pointer w12 h12 lh-12 text-center text-theme-black-300 b-rd-full overflow-hidden border-1"
+          class="cursor-pointer w12 h12 lh-12 text-xl text-center text-theme-black-300 b-rd-full overflow-hidden border-1"
         >
           <FontAwesomeIcon :icon="faUser" />
         </div>
