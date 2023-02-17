@@ -101,10 +101,10 @@ const brands = [faAccusoft, faAdn, faAlgolia, faAlipay, faAmazon, faAirbnb]
     <div class="flex justify-between items-center mb15">
       <h1 class="text-7 font-bold">Download app</h1>
       <div class="flex space-x-2">
-        <a href="#">
+        <a href="#" @click.prevent="$message.warn('演示模式,无法下载')">
           <img src="~/assets/apple-store.png" alt="apple-store" />
         </a>
-        <a href="#">
+        <a href="#" @click.prevent="$message.warn('演示模式,无法下载')">
           <img src="~/assets/google-store.png" alt="apple-store" />
         </a>
       </div>
