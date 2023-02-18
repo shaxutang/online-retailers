@@ -5,35 +5,43 @@ import MessageContainer from './MessageContainer.vue'
 
 const id = 'message-body'
 
-/**
- * 获取渲染 `message` 组件的根元素
- */
-let messageBody = document.querySelector(`#${id}`)
+let control: Control
 
-/**
- * 如果根元素不存在则创建，并且添加到body中
- */
-if (!messageBody) {
-  messageBody = document.createElement('div')
-  messageBody.id = id
-  document.body.append(messageBody)
+if (!import.meta.env.SSR) {
+  /**
+   * 获取渲染 `message` 组件的根元素
+   */
+  let messageBody = document.querySelector(`#${id}`)
+
+  /**
+   * 如果根元素不存在则创建，并且添加到body中
+   */
+  if (!messageBody) {
+    messageBody = document.createElement('div')
+    messageBody.id = id
+    document.body.append(messageBody)
+  }
+
+  /**
+   * 创建 VNode message-container
+   */
+  const _messageContainer = createVNode(MessageContainer)
+
+  /**
+   * 将VNode渲染到根元素上去
+   */
+  render(_messageContainer, messageBody as HTMLElement)
+
+  /**
+   * 必须等VNode渲染完成后才可以获取其组件属性
+   * 获取 message-container 组件的控制器
+   */
+  control = (
+    _messageContainer.component?.exposed as {
+      control: Control
+    }
+  ).control
 }
-
-/**
- * 创建 VNode message-container
- */
-const _messageContainer = createVNode(MessageContainer)
-
-/**
- * 将VNode渲染到根元素上去
- */
-render(_messageContainer, messageBody as HTMLElement)
-
-/**
- * 必须等VNode渲染完成后才可以获取其组件属性
- * 获取 message-container 组件的控制器
- */
-const { control } = _messageContainer.component?.exposed as { control: Control }
 
 export default {
   async message(text: string) {
